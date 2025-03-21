@@ -14,10 +14,10 @@
             <tr
                 v-for="(entry, index) in leaderboard"
                 :key="entry.id"
-                :class="getRowClass(index)"
+                :class="{[getRowClass(index)]:true ,'current-player': entry.player_name === playerName}"
             >
                 <td>{{ index + 1 }}</td>
-                <td>{{ entry.player_name }}</td>
+                <td>{{ entry.player_name }}<span v-if="entry.player_name === playerName"> (Du)</span></td>
                 <td>{{ entry.time_taken }}</td>
                 <td>{{ entry.counter }}</td>
             </tr>
@@ -30,6 +30,7 @@
 export default {
     props: {
         leaderboard: Array,
+        playerName: String,
     },
     methods: {
         getRowClass(index) {
@@ -48,16 +49,24 @@ export default {
 </script>
 
 <style scoped>
+.current-player {
+    background: #0a53be;
+    font-weight: bold;
+}
+.current-player>td{
+    background: #0dcaf0;
+}
 /* Styles für die Rangliste */
-.first-place {
+.first-place>td {
     background-color: gold;
 }
 
-.second-place {
+
+.second-place>td {
     background-color: silver;
 }
 
-.third-place {
+.third-place>td {
     background-color: #cd7f32; /* Bronze Farbe */
 }
 

@@ -8,7 +8,7 @@
             <button class="btn btn-primary mt-3" @click="$emit('restart')">Erneut spielen</button>
 
             <!-- Rangliste anzeigen -->
-            <Leaderboard :leaderboard="leaderboardData" />
+            <Leaderboard :leaderboard="leaderboardData" :player-name="playerName" />
         </div>
     </div>
 </template>

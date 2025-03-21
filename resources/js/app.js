@@ -4,6 +4,11 @@ import { createApp } from 'vue';
 import App from './components/App.vue';
 import axios from 'axios';
 
+import.meta.glob([
+    './components/assets/**'
+])
+
+
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 const token = document.head.querySelector('meta[name="csrf-token"]');
